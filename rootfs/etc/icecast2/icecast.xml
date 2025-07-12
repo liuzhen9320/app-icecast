@@ -1,0 +1,85 @@
+<icecast>
+    <!-- Server configuration -->
+    <location>Earth</location>
+    <admin>admin@example.com</admin>
+    <hostname>localhost</hostname>
+    
+    <!-- Limits and timeout settings -->
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+    
+    <!-- Authentication settings -->
+    <authentication>
+        <source-password>hackme</source-password>
+        <relay-password>hackme</relay-password>
+        <admin-user>admin</admin-user>
+        <admin-password>hackme</admin-password>
+    </authentication>
+    
+    <!-- Listen socket -->
+    <listen-socket>
+        <port>8000</port>
+        <bind-address>0.0.0.0</bind-address>
+    </listen-socket>
+    
+    <!-- Mount point configuration -->
+    <mount type="normal">
+        <mount-name>/stream</mount-name>
+        <username>source</username>
+        <password>hackme</password>
+        <max-listeners>100</max-listeners>
+        <dump-file>/tmp/dump-example.ogg</dump-file>
+        <burst-size>65536</burst-size>
+        <fallback-mount>/silence.ogg</fallback-mount>
+        <fallback-override>1</fallback-override>
+        <fallback-when-full>1</fallback-when-full>
+        <intro>/server-intro.ogg</intro>
+        <hidden>0</hidden>
+        <public>1</public>
+        <stream-name>My Stream</stream-name>
+        <stream-description>My Audio Stream</stream-description>
+        <stream-url>http://www.example.com</stream-url>
+        <genre>music</genre>
+        <bitrate>128</bitrate>
+        <mp3-metadata-interval>4096</mp3-metadata-interval>
+    </mount>
+    
+    <!-- File serving settings -->
+    <fileserve>1</fileserve>
+    
+    <!-- Path settings -->
+    <paths>
+        <basedir>/usr/share/icecast2</basedir>
+        <logdir>/var/log/icecast2</logdir>
+        <webroot>/etc/icecast2/web</webroot>
+        <adminroot>/etc/icecast2/admin</adminroot>
+        <pidfile>/var/run/icecast2/icecast.pid</pidfile>
+        <alias source="/" destination="/status.xsl"/>
+    </paths>
+    
+    <!-- Logging settings -->
+    <logging>
+        <accesslog>access.log</accesslog>
+        <errorlog>error.log</errorlog>
+        <loglevel>3</loglevel>
+        <logsize>10000</logsize>
+        <logarchive>1</logarchive>
+    </logging>
+    
+    <!-- Security settings -->
+    <security>
+        <chroot>0</chroot>
+        <changeowner>
+            <user>icecast</user>
+            <group>icecast</group>
+        </changeowner>
+    </security>
+</icecast>
