@@ -1,6 +1,6 @@
 FROM alpine:3.23 AS builder
 
-ARG ICECAST_VERSION="2.4.4"
+ARG ICECAST_VERSION="2.5.0"
 
 RUN apk update && \
     apk upgrade && \
